@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload=function () {
+// 方法一：
+        var sum_pairs01=function (ints, s) {
+            if (!ints || ints.length < 2) {
+                return;
+            }
+            if (parseInt(s) != s) {
+                return;
+            }
+            for (var i = 1; i < ints.length; i++) {
+                for (var j = 0; j < i; j++) {
+                    if (ints[i] + ints[j] == s) {
+                        return [ints[j], ints[i]];
+                    }
+                }
+            }
+        };
+        alert(sum_pairs01([3,6,4,1,5,7],10));
+//方法二：
+        var sum_pairs02=function(ints, s){
+            var set=new Set();
+            for(var i=0;i<ints.length;i++){
+                if(set.has(s-ints[i])){
+                    return [s-ints[i],ints[i]];
+                }
+                set.add(ints[i]);
+            }
+            return undefined;
+        };
+        alert(sum_pairs01([3,6,7,1,5,4],10));
+    }
+</script>
+</body>
+</html>
